@@ -2,6 +2,8 @@ class ApplicationController < ActionController::API
     before_action :authorized
 
     def encode_token(payload)
+        # One hour token expiration time
+        payload['exp'] = Time.now.to_i * 3600
         JWT.encode(payload, 's3cr3t@ndStr0ngK3y')
     end
 
@@ -23,7 +25,7 @@ class ApplicationController < ActionController::API
 
     def actual_user_id
         if decoded_token
-            # {user_id: x, username: x, alg: x}]
+            # {user_id: x, alg: x, exp: x}]
             user_id = decoded_token['user_id']
         end
     end

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_09_01_002107) do
     t.string "title"
     t.text "description"
     t.string "image_url"
-    t.string "meta"
+    t.integer "goal"
     t.string "finnish_date"
     t.string "user_id"
     t.datetime "created_at", precision: 6, null: false

@@ -1,6 +1,6 @@
 class V1::ProjectController < ApplicationController
     def index
-        @projects = Project.all
+        @projects = Project.where(user_id: actual_user_id)
         render json: @projects, status: :ok
     end
 
@@ -11,8 +11,8 @@ class V1::ProjectController < ApplicationController
     end
 
     def destroy
-        @project = Project.find(params[:id])
-        if @project.destroy
+        @project = Project.find_by(id: params[:id], user_id: actual_user_id)
+        if @project && @project.destroy
             head(:ok)
         else
             head(:unprocessable_entity)

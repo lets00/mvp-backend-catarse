@@ -5,9 +5,18 @@ class V1::ProjectController < ApplicationController
     end
 
     def create
-        @project = Project.new(project_params)
-        @project.save
-        render json: @project, status: :ok
+        # actual_data < finnish_data < actual_data + 30 days
+        actual_data = Time.now.to_i
+        latest_data = actual_data + 30.days.ago.to_i
+        if params[:finnish_date] > actual_data && params[:finnish_date] <= latest_data
+            project_json = project_params
+            project_json['user_id'] = actual_user_id
+            @project = Project.new(project_json)
+            @project.save
+            render json: @project, status: :ok
+        else
+            render json: {message: "finnish_data must be  > #{actual_data}(today) and <= #{latest_data}(30 days later)"}, status: :bad_request
+        end
     end
 
     def destroy

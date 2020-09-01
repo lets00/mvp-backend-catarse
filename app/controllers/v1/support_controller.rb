@@ -25,8 +25,4 @@ class V1::SupportController < ApplicationController
     def support_params
         params.require(:support).permit(:value, :project_id)
     end
-
-    def is_valid_date(finnish_date)
-        Time.now.to_i > Time.parse(finnish_date).to_i
-    end
 end

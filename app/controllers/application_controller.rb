@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
 
     def encode_token(payload)
         # One hour token expiration time
-        payload['exp'] = Time.now.to_i * 3600
+        payload['exp'] = Time.now.to_i + 3600
         JWT.encode(payload, 's3cr3t@ndStr0ngK3y')
     end
 

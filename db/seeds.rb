@@ -15,7 +15,7 @@ for i in 1..10
         title: "Test #{i}",
         description: 'An simple test...', 
         image_url: 'http://www.google.com',
-        goal: 5000,
+        goal: 50,
         finnish_date: "#{30.days.ago.to_i}",
         user_id: '1'
     })
@@ -26,7 +26,7 @@ for i in 11..20
         title: "Test #{i}",
         description: 'An simple test...', 
         image_url: 'http://www.google.com',
-        goal: 5000,
+        goal: 50,
         finnish_date: "#{30.days.ago.to_i}",
         user_id: '2'
     })

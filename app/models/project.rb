@@ -4,4 +4,5 @@ class Project < ApplicationRecord
     validates :image_url, presence: true
     validates :meta, presence: true
     validates :finnish_date, presence: true
+    validates :user_id, presence: true
 end

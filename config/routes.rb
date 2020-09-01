@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     resources :project
     post '/login', to: 'auth#create'
     get '/projects', to: 'projects#index'
+    resources :support, only: [:show, :create]
   end
 end

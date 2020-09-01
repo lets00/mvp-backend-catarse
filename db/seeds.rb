@@ -31,3 +31,12 @@ for i in 11..20
         user_id: '2'
     })
 end
+
+
+for i in 1..3
+    Support.create({
+        project_id: 1,
+        user_id: 1,
+        value: 200 * i
+    })
+end

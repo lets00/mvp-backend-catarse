@@ -12,8 +12,12 @@ class V1::ProjectController < ApplicationController
             project_json = project_params
             project_json['user_id'] = actual_user_id
             @project = Project.new(project_json)
-            @project.save
-            render json: @project, status: :ok
+            if @project.valid?
+                @project.save
+                render json: @project, status: :ok
+            else
+                render json: @project.errors.messages, status: :bad_request
+            end
         else
             render json: {message: "finnish_data must be  > #{actual_data}(today) and <= #{latest_data}(30 days later)"}, status: :bad_request
         end

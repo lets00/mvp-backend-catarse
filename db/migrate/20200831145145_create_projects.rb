@@ -4,7 +4,7 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :description
       t.string :image_url
-      t.string :meta
+      t.integer :goal
       t.string :finnish_date
       t.string :user_id
       t.timestamps

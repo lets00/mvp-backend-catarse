@@ -16,6 +16,19 @@ class V1::ProjectController < ApplicationController
         end
     end
 
+    def update
+        @project = Project.find_by(id: params[:id], user_id: actual_user_id)
+        if @project
+            if @project.update_attributes(project_params)
+                render json: @project, status: :ok
+            else
+                head(:bad_request)
+            end
+        else
+            head(:not_found)
+        end
+    end
+
     def destroy
         @project = Project.find_by(id: params[:id], user_id: actual_user_id)
         if @project && @project.destroy

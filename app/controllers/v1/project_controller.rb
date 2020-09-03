@@ -1,7 +1,13 @@
 class V1::ProjectController < ApplicationController
+    skip_before_action :authorized, only: [:index, :show]
     def index
-        @projects = Project.where(user_id: actual_user_id)
+        @projects = Project.where("title LIKE ?", "%#{params[:title]}%").limit(params[:limit] || 10).offset(params[:skip] || 0)
         render json: @projects, status: :ok
+    end
+
+    def show
+        @project = Project.find_by(id: params[:id])
+        render json: @project, status: :ok
     end
 
     def create

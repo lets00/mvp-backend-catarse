@@ -1,8 +1,12 @@
 class V1::UserController < ApplicationController
     skip_before_action :authorized
-    def index
+    def show
         @user = User.find_by(id: params[:id])
-        render json: {username: @user['username']}, status: :ok
+        if @user
+            render json: {username: @user['username']}, status: :ok
+        else
+            head(:not_found)
+        end
     end
 
     def projects

@@ -1,5 +1,15 @@
 version: '3'
 services:
+  app:
+    build: .
+    depends_on:
+      - database
+    ports:
+      - 4000:4000
+    env_file: database.env
+    environment:
+      RAILS_ENV: production
+
   database:
     image: "postgres"
     env_file:

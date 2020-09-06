@@ -1,6 +1,10 @@
 # mvp-backend-catarse
 
-Esse projeto implementa o backend do catarsinho (um serviço simplificado do catarse). As regras de negócio são especificadas abaixo:
+Esse projeto implementa o backend do catarsinho (um serviço simplificado do catarse). 
+
+A API está publicamente disponível em : https://mvp-backend-catarse.herokuapp.com/v1/
+
+As regras de negócio são especificadas abaixo:
 
 ## Regras de negócio (In portuguese)
 
@@ -39,7 +43,7 @@ $ rake db:create db:migrate db:seed
 ```
 ## Routes
 
-This default endpoint is formed by: http://localhost:4000/v1/
+Default endpoint is formed by: http://localhost:4000/v1/
 
 The main 4 routes are:
 * /project
